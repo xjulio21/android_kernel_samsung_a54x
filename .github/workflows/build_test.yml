@@ -47,10 +47,10 @@ jobs:
       - name: Build Kernel Clean
         run: |
           ./build_kernel.sh ${{ matrix.target }}
-          cp ~/AnyKernel3/Squeak* ~/files
+          cp ~/AnyKernel3/Aegis* ~/files
 
       - name: Upload Test Build ${{ matrix.target }}
         uses: actions/upload-artifact@v4
         with:
-          name: Squeak-${{ matrix.target }}
-          path: ~/files/Squeak*
+          name: Aegis-${{ matrix.target }}
+          path: ~/files/Aegis*
