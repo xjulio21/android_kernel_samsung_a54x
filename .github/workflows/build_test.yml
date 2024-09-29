@@ -41,7 +41,7 @@ jobs:
 
       - name: Fetch AnyKernel3
         run: |
-          git clone --branch a54x https://github.com/Vaz15k/AnyKernel3.git ~/AnyKernel3
+          git clone --branch a54x https://github.com/xjulio21/AnyKernel3.git ~/AnyKernel3
           mkdir -p ~/files
 
       - name: Build Kernel Clean
