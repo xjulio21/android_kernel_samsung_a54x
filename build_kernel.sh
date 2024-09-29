@@ -47,7 +47,7 @@ ksu() {
 
     # Check the value of KSU
     if [ "$KSU" == "true" ]; then
-        ZIP_NAME="Squeak_KSU_"$DEVICE_NAME"_"$(date +'%Y-%m-%d')""
+        ZIP_NAME="Aegis_KSU_"$DEVICE_NAME"_"$(date +'%Y-%m-%d')""
 		rm -fr $OUT_DIR
         if [ -d "KernelSU" ]; then
             echo "KernelSU exists"
@@ -58,7 +58,7 @@ ksu() {
         fi
     elif [ "$KSU" == "false" ]; then
         echo "KSU disabled"
-        ZIP_NAME="Squeak_"$DEVICE_NAME"_"$(date +'%Y-%m-%d')""
+        ZIP_NAME="Aegis_"$DEVICE_NAME"_"$(date +'%Y-%m-%d')""
         if [ -d "KernelSU" ]; then
             rm -rf drivers/kernelsu
             rm -rf KernelSU
@@ -71,7 +71,7 @@ anykernel3() {
 	if [ -d $AK3_DIR ]; then
 		cd $AK3_DIR
 		git reset HEAD --hard
-		rm -fr Squeak* Image
+		rm -fr Aegis* Image
 		cd $DIR
 	else 
 	    git clone --branch a54x https://github.com/Vaz15k/AnyKernel3.git $AK3_DIR
