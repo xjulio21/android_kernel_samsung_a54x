@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_squeak:
+  build_Aegis:
     runs-on: ubuntu-latest
 
     strategy:
@@ -95,7 +95,7 @@ jobs:
       - name: Build Kernel Clean
         run: |
           ./build_kernel.sh ${{ matrix.target }}
-          cp ~/AnyKernel3/Squeak* ~/files
+          cp ~/AnyKernel3/Aegis* ~/files
 
       - name: Create LKM Kernel
         run: |
@@ -109,27 +109,27 @@ jobs:
           echo "Checking existence of images..."
           if [[ -f "boot.img" && -f "init_boot.img" ]]; then
             echo "Creating tar archive..."
-            tar -cf Squeak_KSU-LKM_${{ matrix.target }}_${{ env.DATE }}.tar boot.img init_boot.img
+            tar -cf Aegis_KSU-LKM_${{ matrix.target }}_${{ env.DATE }}.tar boot.img init_boot.img
           else
             echo "Error: One or both images not found!"
             exit 1
           fi
 
-          mv Squeak* ~/files
+          mv Aegis* ~/files
           echo "Completed successfully."
 
       - name: Build Kernel With KSU
         run: |
           rm -rf ~/mkboot
           ./build_kernel.sh ${{ matrix.target }} --ksu
-          cp ~/AnyKernel3/Squeak* ~/files
+          cp ~/AnyKernel3/Aegis* ~/files
 
       - name: Publish to GitHub
         id: release
         uses: softprops/action-gh-release@v2
         with:
-          files: /home/runner/files/Squeak*
-          name: Squeak Kernel - ${{ env.DATE }}
+          files: /home/runner/files/Aegis*
+          name: Aegis Kernel - ${{ env.DATE }}
           tag_name: "${{ env.DATE }}"
           body: |
             - **Kernel Version:** 5.15.123
